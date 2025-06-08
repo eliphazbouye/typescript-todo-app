@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo App</title>
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css"
+    >
+</head>
+<body>
+    <main class="container">
+      <h1>Todo App!</h1>
+      <form>
+        <div>
+            <input type="text" id="todo" name="todo" placeholder="Todo" aria-label="Text">
+            <div class="error-message pico-color-red-500"></div>
+            <br>
+        </div>  
+          
+        <div class="">
+            <button class="add-button">Add</button>
+        </div>
+      </form>
+    </main>
+    <script type="module" src="/app.ts"></script>
+</body>
+</html>

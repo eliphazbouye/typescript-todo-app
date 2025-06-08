@@ -1,0 +1,16 @@
+{
+  "name": "todo-app",
+  "version": "0.0.1",
+  "description": "Typescript todo app",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "author": "Eliphaz Bouye",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^6.3.5"
+  }
+}
