@@ -4,18 +4,38 @@ import { Status } from './enums/Status';
 const inputElement = document.querySelector('#todo') as HTMLInputElement;
 const buttonElement = document.querySelector('.add-button') as HTMLButtonElement;
 const errorMessage = document.querySelector('.error-message') as HTMLDivElement;
+const todoList = document.querySelector('.todos-list') as HTMLUListElement;
 
-let taskTitle = ""
+function showTodoList(todos: []) {
+    todos.map((todo: ITask) => {
+        const item = document.createElement('li');
+        const div = document.createElement('div');
+        const title = document.createElement('h3');
 
-inputElement.addEventListener('input', function (event: any) {
-    taskTitle = event.target.value.trim();
-});
+        item.appendChild(div);
+        div.appendChild(title);
+        
+        title.textContent = todo.title;
+        todoList.appendChild(item);
+    })
+}
 
-buttonElement.addEventListener('click', function (event: any) {
+const storage = localStorage.getItem('todos');
+const todos = storage ? JSON.parse(storage) : [];
+
+let taskTitle = "";
+
+
+inputElement.addEventListener('input', handleChange);
+buttonElement.addEventListener('click', handleClick);
+
+
+function handleChange(event: any) {
+  taskTitle = event.target.value.trim();
+}
+
+function handleClick(event: any) {
     event.preventDefault();
-    
-    const storage = localStorage.getItem('todos');
-    const todos = storage ? JSON.parse(storage) : [];
 
     if (inputElement.value === "") {
         errorMessage.textContent = "Task cannot be empty"
@@ -32,7 +52,11 @@ buttonElement.addEventListener('click', function (event: any) {
 
     localStorage.setItem('todos', JSON.stringify(todos));
 
-    console.log('add todo: ', todos);
     inputElement.value = "";
     errorMessage.textContent = "";
-});
+
+    todoList.innerHTML = "";
+    showTodoList(todos)
+}
+
+showTodoList(todos)
